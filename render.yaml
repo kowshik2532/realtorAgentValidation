@@ -2,7 +2,7 @@ services:
   - type: web
     name: realtor-agent-validation
     env: python
-    buildCommand: pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium
+    buildCommand: pip install -r requirements.txt && python -m playwright install chromium && python -m playwright install-deps chromium
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
