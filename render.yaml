@@ -2,7 +2,7 @@ services:
   - type: web
     name: realtor-agent-validation
     env: python
-    buildCommand: pip install -r requirements.txt && playwright install chromium
+    buildCommand: pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium
     startCommand: python main.py
     envVars:
       - key: PYTHON_VERSION
