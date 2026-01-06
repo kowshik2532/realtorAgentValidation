@@ -18,9 +18,10 @@ class PlaywrightMCPClient:
     
     async def __aenter__(self):
         self.playwright = await async_playwright().start()
+        # Configure browser launch for Render deployment
         self.browser = await self.playwright.chromium.launch(
             headless=True,
-            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process']
         )
         context = await self.browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

@@ -7,6 +7,4 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: PLAYWRIGHT_BROWSERS_PATH
-        value: /opt/render/.cache/ms-playwright
 

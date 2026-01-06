@@ -35,9 +35,10 @@ async def scrape_agents(search_label: str = "") -> List[AgentInfo]:
         List of AgentInfo objects
     """
     async with async_playwright() as p:
+        # Configure browser launch for Render deployment
         browser = await p.chromium.launch(
             headless=True,
-            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process']
         )
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -179,9 +180,10 @@ async def scrape_agent_profile(profile_id: str) -> Optional[AgentInfo]:
         AgentInfo object with detailed information
     """
     async with async_playwright() as p:
+        # Configure browser launch for Render deployment
         browser = await p.chromium.launch(
             headless=True,
-            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process']
         )
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -401,9 +403,10 @@ async def scrape_local_agents_page(base_url: str = "https://dreproxy.onrender.co
         List of AgentInfo objects extracted from the page
     """
     async with async_playwright() as p:
+        # Configure browser launch for Render deployment
         browser = await p.chromium.launch(
             headless=True,
-            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            args=['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process']
         )
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
