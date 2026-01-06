@@ -27,3 +27,6 @@ Thumbs.db
 # Project specific
 agentProfile.pdf
 /tmp/
+
+# Playwright
+.playwright/
